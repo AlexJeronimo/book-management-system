@@ -46,7 +46,8 @@ go build -o bms.exe ./cmd
 or download compiled binary from git repository.
 
 ## Project structure
-'''
+
+```text
 .
 ├── cmd
 │   └── main.go
@@ -61,7 +62,7 @@ or download compiled binary from git repository.
 │       ├── list.go
 │       └── search.go
 └── README.md
-'''
+```
 
 ## Usage
 
