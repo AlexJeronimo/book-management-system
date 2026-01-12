@@ -1,0 +1,6 @@
+*.exe
+/data
+*.test
+.out
+.tmp
+/bin
