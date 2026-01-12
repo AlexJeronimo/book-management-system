@@ -1,6 +1,6 @@
 package book
 
-// TODO: add genres and subgenres (leave it for feature development practive to work with legacy code, add feature, etc.)
+// TODO: add genres and subgenres (leave it for feature development practice to work with legacy code, add features, etc.)
 type Book struct {
 	ID        int      `json:"id"`
 	Authors   []string `json:"authors"`
@@ -11,42 +11,19 @@ type Book struct {
 	StoreLink string   `json:"store_link,omitempty"`
 }
 
-func NewBook() Book {
+// Method to create new book
+func NewBook(name string, authors []string, isbn string, read bool, id int) Book {
+	//create new empty book
+	//fill the book with data
 	//TODO: add validation to entered values
-	var autor string
-	var authors []string
-	var name string
-	var isbn string
-	var read bool
-	var whishlist bool
-	var storeLink string
-
-	authors = append(authors, autor)
-
-	book := Book{
-		ID:        GenerateID(),
-		Authors:   authors,
+	return Book{
+		ID:        id,
 		Name:      name,
+		Authors:   authors,
 		ISBN:      isbn,
 		Read:      read,
-		Whishlist: whishlist,
-		StoreLink: storeLink,
+		Whishlist: false,
+		StoreLink: "_",
 	}
 
-	return book
-}
-
-// TODO: in learning purposes do with two different variants, with user prompting and with cli flags
-func GetBookData() {
-	//prompt user for book data to fill the struct fields
-	//can be passed as cli commands
-
-}
-
-func GenerateID() int {
-	//some king of autoincrement for ID value
-	//get last id in the book list and add +1 maxID+1
-	// if list empty, return 1 if []Book == 0; id = 1
-	var id int
-	return id
 }

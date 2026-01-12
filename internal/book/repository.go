@@ -1,9 +1,33 @@
 package book
 
-func Add() {
-	//create new empty book
-	//fill the book with data
-	//save book to repository file
+type Repository struct {
+	Books []Book
+}
+
+func NewRepository() *Repository {
+	return &Repository{}
+}
+
+func (repo *Repository) GenerateID() int {
+	//some king of autoincrement for ID value
+	//get last id in the book list and add +1 maxID+1
+	//1. Load book list from file if exists
+	//2. if list empty, return 1 if []Book == 0; id = 1
+	maxID := 0
+	for _, book := range repo.Books {
+		if book.ID > maxID {
+			maxID = book.ID
+		}
+	}
+
+	return maxID + 1
+}
+
+func (repo *Repository) Add(book Book) {
+	//receive book with filled data
+	//add book to memory
+	//save book to local json file
+	repo.Books = append(repo.Books, book)
 }
 
 // TODO: add interactive pagination to book list (limit 25-50 books per page,  show total number and current positions listed, show page from pages 12/25)
@@ -21,7 +45,7 @@ func Search() {
 }
 
 func Save() {
-	//save book to json file
+	//save books to json file
 }
 
 func Load() {
