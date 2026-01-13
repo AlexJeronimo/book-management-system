@@ -7,6 +7,10 @@ import (
 	"github.com/AlexJeronimo/book-management-system/internal/book"
 )
 
+const (
+	bookshelfFile = "data/.bookshelf.json"
+)
+
 //TODO: add normal error handling, leave it as feature refactoring tasks
 
 func main() {
@@ -20,4 +24,12 @@ func main() {
 		fmt.Println(err)
 	}
 	fmt.Println(string(data))
+
+	repo.Add(book)
+
+	err = repo.Save(bookshelfFile)
+	if err != nil {
+		fmt.Println("can't save data to json file. Error: ", err)
+	}
+
 }

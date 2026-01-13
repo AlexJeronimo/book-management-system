@@ -1,5 +1,10 @@
 package book
 
+import (
+	"encoding/json"
+	"os"
+)
+
 type Repository struct {
 	Books []Book
 }
@@ -44,14 +49,43 @@ func Search() {
 	// show is book in repository and show its status
 }
 
-func Save() {
+func (repo *Repository) Save(filename string) error {
 	//save books to json file
+	data, err := json.MarshalIndent(repo, "", " ")
+	if err != nil {
+		return err
+	}
+	err = os.WriteFile(filename, data, 0644)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
-func Load() {
+func (repo *Repository) Load(filename string) error {
 	//get books list from json file
+	data, err := os.ReadFile(filename)
+	if err != nil {
+		return err
+	}
+	err = json.Unmarshal(data, repo)
+	if err != nil {
+		return err
+	}
+	return nil
+
 }
 
-func Read() {
+func (repo *Repository) SetRead(id int) {
 	//change read status from yes to no or backwards
+	// for _, elem := range repo.Books {
+	// 	if elem.ID == id {
+	// 		elem.Read = true
+	// 	}
+	// }
+}
+
+func (repo *Repository) SetStoreLink(link string, book Book) {
+	//set store link
 }
