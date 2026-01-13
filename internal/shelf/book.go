@@ -1,4 +1,4 @@
-package book
+package shelf
 
 // TODO: add genres and subgenres (leave it for feature development practice to work with legacy code, add features, etc.)
 type Book struct {

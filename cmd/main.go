@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/AlexJeronimo/book-management-system/internal/book"
+	"github.com/AlexJeronimo/book-management-system/internal/shelf"
 )
 
 const (
@@ -14,10 +14,10 @@ const (
 //TODO: add normal error handling, leave it as feature refactoring tasks
 
 func main() {
-	repo := book.Repository{}
+	repo := shelf.Repository{}
 
 	id := repo.GenerateID()
-	book1 := book.NewBook("title", []string{"author"}, "ISBN", true, id)
+	book1 := shelf.NewBook("title", []string{"author"}, "ISBN", true, id)
 	fmt.Printf("%+v\n", book1)
 	data, err := json.MarshalIndent(book1, "", " ")
 	if err != nil {
@@ -32,7 +32,7 @@ func main() {
 		fmt.Println("can't save data to json file. Error: ", err)
 	}
 
-	newRepo := book.NewRepository()
+	newRepo := shelf.NewRepository()
 
 	newRepo.Load(bookshelfFile)
 

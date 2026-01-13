@@ -1,4 +1,4 @@
-package book
+package shelf
 
 import (
 	"encoding/json"
