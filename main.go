@@ -17,7 +17,7 @@ func main() {
 	repo := shelf.Repository{}
 
 	id := repo.GenerateID()
-	book1 := shelf.NewBook("title", []string{"author"}, "ISBN", true, id)
+	book1 := shelf.NewBook(id, "title", []string{"author"}, "ISBN", true)
 	fmt.Printf("%+v\n", book1)
 	data, err := json.MarshalIndent(book1, "", " ")
 	if err != nil {
@@ -37,5 +37,7 @@ func main() {
 	newRepo.Load(bookshelfFile)
 
 	fmt.Printf("%+v\n", newRepo)
+
+	newRepo.List()
 
 }

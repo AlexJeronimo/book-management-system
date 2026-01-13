@@ -11,8 +11,8 @@ type Book struct {
 	StoreLink string   `json:"store_link,omitempty"`
 }
 
-// Method to create new book
-func NewBook(name string, authors []string, isbn string, read bool, id int) Book {
+// Create new book
+func NewBook(id int, name string, authors []string, isbn string, read bool) Book {
 	//create new empty book
 	//fill the book with data
 	//TODO: add validation to entered values
@@ -23,7 +23,15 @@ func NewBook(name string, authors []string, isbn string, read bool, id int) Book
 		ISBN:      isbn,
 		Read:      read,
 		Whishlist: false,
-		StoreLink: "_",
+		StoreLink: "",
 	}
 
+}
+
+// Add book to whishlist and set store link
+func (b *Book) AddToWhishlist(link string) {
+	//add book to whishlist
+	//set storelink
+	b.Whishlist = true
+	b.StoreLink = link
 }

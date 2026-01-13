@@ -2,17 +2,21 @@ package shelf
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
+	"strings"
 )
 
 type Repository struct {
 	Books []Book
 }
 
+// Create new bookshelf
 func NewRepository() *Repository {
 	return &Repository{}
 }
 
+// Generate book ID
 func (repo *Repository) GenerateID() int {
 	//some king of autoincrement for ID value
 	//get last id in the book list and add +1 maxID+1
@@ -28,6 +32,7 @@ func (repo *Repository) GenerateID() int {
 	return maxID + 1
 }
 
+// Add book to shelf
 func (repo *Repository) Add(book Book) {
 	//receive book with filled data
 	//add book to memory
@@ -35,20 +40,47 @@ func (repo *Repository) Add(book Book) {
 	repo.Books = append(repo.Books, book)
 }
 
-// TODO: add interactive pagination to book list (limit 25-50 books per page,  show total number and current positions listed, show page from pages 12/25)
-// TODO: add cli icons in feature as app optimization step in later releases
-func List() {
-	//get all books
-	//filter books
+// List books in shelf
+func (repo *Repository) List() {
 	//list books
+	// TODO: add interactive pagination to book list (limit 25-50 books per page,  show total number and current positions listed, show page from pages 12/25)
+	// TODO: add cli icons in feature as app optimization step in later releases
+	// TODO: change to two outputs for existing books and for whishlist
+
+	for _, book := range repo.Books {
+		fmt.Println("ID: ", book.ID)
+		fmt.Printf("Book Title: %s\n", book.Name)
+		if len(book.Authors) == 0 {
+			fmt.Println("Anknown Author")
+		} else {
+			fmt.Println("Author(s): ", strings.Join(book.Authors, ", "))
+		}
+
+		if book.ISBN == "" {
+			continue
+		} else {
+			fmt.Println("ISBN: ", book.ISBN)
+		}
+
+		if book.Whishlist == true {
+			fmt.Println("Book store link: ", book.StoreLink)
+		}
+
+	}
 
 }
 
-func Search() {
+func Search(whichlist bool, search string) {
 	//search book by name (partial name), author (one of authors or by Author Name or Second Name), isbn
 	// show is book in repository and show its status
+	if whichlist == true {
+		//do search in whichlist books
+	} else {
+		//do search in already existed books
+	}
 }
 
+// Save shelf to file
 func (repo *Repository) Save(filename string) error {
 	//save books to json file
 	data, err := json.MarshalIndent(repo, "", " ")
@@ -63,6 +95,7 @@ func (repo *Repository) Save(filename string) error {
 	return nil
 }
 
+// Load books from file to shelf
 func (repo *Repository) Load(filename string) error {
 	//get books list from json file
 	data, err := os.ReadFile(filename)
@@ -77,15 +110,19 @@ func (repo *Repository) Load(filename string) error {
 
 }
 
+// Mark book as red
 func (repo *Repository) SetRead(id int) {
-	//change read status from yes to no or backwards
+	//change read status from no to yes
+
 	// for _, elem := range repo.Books {
 	// 	if elem.ID == id {
 	// 		elem.Read = true
 	// 	}
 	// }
+	// repo.Save()
 }
 
-func (repo *Repository) SetStoreLink(link string, book Book) {
-	//set store link
+// Move book from whishlist to shelf
+func MoveFromWhishListToShelf(id int) {
+
 }
