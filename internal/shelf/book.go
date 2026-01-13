@@ -12,16 +12,26 @@ type Book struct {
 }
 
 // Create new book
-func NewBook(id int, name string, authors []string, isbn string, read bool) Book {
+func NewBook(id int, name string, authors []string, isbn string, read string) Book {
 	//create new empty book
 	//fill the book with data
 	//TODO: add validation to entered values
+
+	var readBook bool
+
+	switch read {
+	case "yes", "y", "YES", "Yes", "Y":
+		readBook = true
+	default:
+		readBook = false
+	}
+
 	return Book{
 		ID:        id,
 		Name:      name,
 		Authors:   authors,
 		ISBN:      isbn,
-		Read:      read,
+		Read:      readBook,
 		Whishlist: false,
 		StoreLink: "",
 	}
