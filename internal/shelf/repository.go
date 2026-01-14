@@ -47,6 +47,7 @@ func (repo *Repository) List() {
 	// TODO: add cli icons in feature as app optimization step in later releases
 	// TODO: change to two outputs for existing books and for whishlist
 
+	fmt.Println("------------------------------------")
 	for _, book := range repo.Books {
 		fmt.Println("ID: ", book.ID)
 		fmt.Printf("Book Title: %s\n", book.Name)
@@ -65,6 +66,7 @@ func (repo *Repository) List() {
 		if book.Whishlist == true {
 			fmt.Println("Book store link: ", book.StoreLink)
 		}
+		fmt.Println("------------------------------------")
 
 	}
 
