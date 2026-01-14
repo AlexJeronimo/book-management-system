@@ -72,10 +72,10 @@ func (repo *Repository) List() {
 
 }
 
-func Search(whichlist bool, search string) {
+func Search(whishlist bool, search string) {
 	//search book by name (partial name), author (one of authors or by Author Name or Second Name), isbn
 	// show is book in repository and show its status
-	if whichlist == true {
+	if whishlist == true {
 		//do search in whichlist books
 	} else {
 		//do search in already existed books
@@ -114,14 +114,17 @@ func (repo *Repository) Load(filename string) error {
 
 // Mark book as red
 func (repo *Repository) SetRead(id int) {
-	//change read status from no to yes
+	//repo.List()
+	//fmt.Println("Call list to identify does method receive books")
+	//fmt.Printf("ID: %d, type: %T", id, id)
 
-	// for _, elem := range repo.Books {
-	// 	if elem.ID == id {
-	// 		elem.Read = true
-	// 	}
-	// }
-	// repo.Save()
+	for i := range repo.Books {
+		if repo.Books[i].ID == id {
+			//fmt.Printf("The book where I whant to change ID. %v+\n", repo.Books[i])
+			repo.Books[i].Read = true
+			//fmt.Printf("The read status after changing %v+\n", repo.Books[i].Read)
+		}
+	}
 }
 
 // Move book from whishlist to shelf

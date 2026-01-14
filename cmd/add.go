@@ -10,8 +10,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var name, isbn, read string
+var name, isbn, read, storelink string
 var authors []string
+var whishlist bool
 
 // addCmd represents the add command
 var addCmd = &cobra.Command{
@@ -32,6 +33,11 @@ to quickly create a Cobra application.`,
 		// such as title, autors, isbn if exists (if no it should be empty), is book read (bool value, yes or no)
 		id := application.Repo.GenerateID()
 		book := shelf.NewBook(id, name, authors, isbn, read)
+
+		if whishlist {
+			book.AddToWhishlist(storelink)
+		}
+
 		application.Repo.Add(book)
 		application.Repo.Save(bookshelfFile)
 
@@ -51,9 +57,11 @@ func init() {
 	// is called directly, e.g.:
 	// addCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
-	addCmd.Flags().StringVarP(&name, "title", "t", "book title", "Book name")
+	addCmd.Flags().StringVarP(&name, "title", "t", "", "Book name")
 	addCmd.Flags().StringSliceVarP(&authors, "author", "a", []string{}, "Book author")
-	addCmd.Flags().StringVarP(&isbn, "isbn", "i", "book isbn", "ISBN")
-	addCmd.Flags().StringVarP(&read, "read", "r", "book read", "is book read")
+	addCmd.Flags().StringVarP(&isbn, "isbn", "s", "", "ISBN")
+	addCmd.Flags().StringVarP(&read, "read", "r", "no", "is book read")
+	addCmd.Flags().BoolVarP(&whishlist, "whishlist", "w", false, "add book to whishlist")
+	addCmd.Flags().StringVarP(&storelink, "storelink", "l", "", "add storelink")
 
 }
