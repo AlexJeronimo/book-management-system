@@ -38,31 +38,5 @@ cd book-management-system
 go build -o bms ./cmd
 ```
 
-for Windows systems change 
-```bash
-go build -o bms.exe ./cmd
-```
-
-or download compiled binary from git repository.
-
-## Project structure
-
-```text
-.
-├── cmd
-│   └── main.go
-├── data
-├── go.mod
-├── internal
-│   ├── book
-│   │   ├── book.go
-│   │   └── repository.go
-│   └── cli
-│       ├── add.go
-│       ├── list.go
-│       └── search.go
-└── README.md
-```
-
 ## Usage
 

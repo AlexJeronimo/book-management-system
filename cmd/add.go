@@ -54,6 +54,6 @@ func init() {
 	addCmd.Flags().StringVarP(&name, "title", "t", "book title", "Book name")
 	addCmd.Flags().StringSliceVarP(&authors, "author", "a", []string{}, "Book author")
 	addCmd.Flags().StringVarP(&isbn, "isbn", "i", "book isbn", "ISBN")
-	addCmd.Flags().StringVarP(&read, "read", "r", "book is read", "is book read")
+	addCmd.Flags().StringVarP(&read, "read", "r", "book read", "is book read")
 
 }
