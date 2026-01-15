@@ -9,8 +9,8 @@ Also, it is planned to be used as my book management system (I have plenty of bo
 
 ## Features
 
-- Add book with title, authors, ISBN
-- Mark books as read / unread
+- Add book with title, authors, ISBN, genre
+- Mark books as read
 - Manage whishlist (books to buy later)
 - Search books by:
     - title
@@ -90,3 +90,20 @@ Flags:
   -i, --id string   set book id
 
 `bms read --id 15`
+
+### search
+Usage:
+  bms search [flags]
+
+Flags:
+      --author         Search by author
+  -h, --help           help for search
+      --isbn           Search by ISBN
+      --no-wishlist    Exclude wishlist books
+  -q, --query string   Search text
+      --read           Show only read books
+      --title          Search by title (default true)
+      --unread         Show only unread books
+      --wishlist       Only wishlist books
+
+`bms search -q "Author name" --author`

@@ -92,3 +92,62 @@ func (repo *Repository) PrintTable(wl bool) {
 
 	table.Render()
 }
+
+func PrintResult(shelf []Book) {
+	table := tablewriter.NewWriter(os.Stdout)
+
+	if len(shelf) == 0 {
+		fmt.Println("No books found")
+		return
+	}
+
+	if shelf[0].Whishlist {
+		table.Header([]string{"ID", "Title", "Authors", "Genre", "ISBN", "Read", "Wishlist"})
+		for _, book := range shelf {
+			if !book.Whishlist {
+				continue
+			} else {
+				authors := strings.Join(book.Authors, ", ")
+				read := "No"
+				if book.Read {
+					read = "Yes"
+				}
+				wishlist := "No"
+				if book.Whishlist {
+					wishlist = "Yes"
+				}
+
+				table.Append([]string{
+					fmt.Sprint(book.ID),
+					book.Name,
+					authors,
+					book.Genre,
+					book.ISBN,
+					read,
+					wishlist,
+				})
+			}
+
+		}
+	} else {
+		table.Header([]string{"ID", "Title", "Authors", "Genre", "ISBN", "Read"})
+		for _, book := range shelf {
+			authors := strings.Join(book.Authors, ", ")
+			read := "No"
+			if book.Read {
+				read = "Yes"
+			}
+
+			table.Append([]string{
+				fmt.Sprint(book.ID),
+				book.Name,
+				authors,
+				book.Genre,
+				book.ISBN,
+				read,
+			})
+		}
+	}
+
+	table.Render()
+}
