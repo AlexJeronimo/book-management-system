@@ -9,16 +9,16 @@ Also, it is planned to be used as my book management system (I have plenty of bo
 
 ## Features
 
-- Add book with title, authors, ISBN, genre
-- Mark books as read
-- Manage whishlist (books to buy later)
-- Search books by:
-    - title
-    - author
-    - ISBN
-- List books with filters
-- Local storage JSON 
-- Pagination for large collections
+- Add book with title, authors, ISBN, genre  
+- Mark books as read  
+- Manage whishlist (books to buy later)  
+- Search books by:  
+    - title  
+    - author  
+    - ISBN  
+- List books with filters  
+- Local storage JSON   
+- Pagination for large collections  
 
 ## Project Status
 
@@ -43,10 +43,10 @@ go build -o bms ./cmd
 `bms [command]`
 
 Available Commands:
-    add         Add the book to the shelf
-    list        List all books in the shelf
-    read        Set book as read
-    help        Help about any command
+    add         Add the book to the shelf  
+    list        List all books in the shelf  
+    read        Set book as read  
+    help        Help about any command  
 
 ### help
     -h, --help   help for bms
@@ -59,14 +59,14 @@ Usage:
   bms add [flags]
 
 Flags:
-  -a, --author strings     Book author
-  -g, --genre string       add book genre
-  -h, --help               help for add
-  -s, --isbn string        ISBN
-  -r, --read               is book read
-  -l, --storelink string   add storelink
-  -t, --title string       Book name
-  -w, --whishlist          add book to whishlist
+  -a, --author strings     Book author  
+  -g, --genre string       add book genre  
+  -h, --help               help for add  
+  -s, --isbn string        ISBN  
+  -r, --read               is book read  
+  -l, --storelink string   add storelink  
+  -t, --title string       Book name  
+  -w, --whishlist          add book to whishlist  
 
   `bms add -a "Author" --author "Another Author" --title "Book title" -g "Book genre" -r -w -l "https://link_where_you_can_order_the_book" -s "Book ISBN"`
 
@@ -75,8 +75,8 @@ Usage:
   bms list
 
 Flags:
-  -h, --help        help for list
-  -w, --whishlist   show books from whishlist
+  -h, --help        help for list  
+  -w, --whishlist   show books from whishlist  
 
 `bms list`
 `bms list -w`
@@ -86,8 +86,8 @@ Flags:
   bms read [flags]
 
 Flags:
-  -h, --help        help for read
-  -i, --id string   set book id
+  -h, --help        help for read  
+  -i, --id string   set book id  
 
 `bms read --id 15`
 
@@ -96,14 +96,14 @@ Usage:
   bms search [flags]
 
 Flags:
-      --author         Search by author
-  -h, --help           help for search
-      --isbn           Search by ISBN
-      --no-wishlist    Exclude wishlist books
-  -q, --query string   Search text
-      --read           Show only read books
-      --title          Search by title (default true)
-      --unread         Show only unread books
-      --wishlist       Only wishlist books
+      --author         Search by author  
+  -h, --help           help for search  
+      --isbn           Search by ISBN  
+      --no-wishlist    Exclude wishlist books  
+  -q, --query string   Search text  
+      --read           Show only read books  
+      --title          Search by title (default true)  
+      --unread         Show only unread books  
+      --wishlist       Only wishlist books  
 
 `bms search -q "Author name" --author`
