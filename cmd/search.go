@@ -40,6 +40,14 @@ to quickly create a Cobra application.`,
 			ISBN:   searchISBN,
 		}
 
+		// fmt.Printf(
+		// 	"DEBUG query=%q title=%v author=%v isbn=%v\n",
+		// 	filter.Query,
+		// 	filter.Title,
+		// 	filter.Author,
+		// 	filter.ISBN,
+		// )
+
 		// Read / Unread
 		if readOnly && !unreadOnly {
 			v := true
@@ -71,7 +79,7 @@ func init() {
 
 	searchCmd.Flags().StringVarP(&query, "query", "q", "", "Search text")
 
-	searchCmd.Flags().BoolVar(&searchTitle, "title", true, "Search by title")
+	searchCmd.Flags().BoolVar(&searchTitle, "title", false, "Search by title")
 	searchCmd.Flags().BoolVar(&searchAuthor, "author", false, "Search by author")
 	searchCmd.Flags().BoolVar(&searchISBN, "isbn", false, "Search by ISBN")
 
