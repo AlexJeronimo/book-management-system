@@ -40,3 +40,53 @@ go build -o bms ./cmd
 
 ## Usage
 
+`bms [command]`
+
+Available Commands:
+    add         Add the book to the shelf
+    list        List all books in the shelf
+    read        Set book as read
+    help        Help about any command
+
+### help
+    -h, --help   help for bms
+
+`bms help`
+`bms -h`
+
+### add
+Usage:
+  bms add [flags]
+
+Flags:
+  -a, --author strings     Book author
+  -g, --genre string       add book genre
+  -h, --help               help for add
+  -s, --isbn string        ISBN
+  -r, --read               is book read
+  -l, --storelink string   add storelink
+  -t, --title string       Book name
+  -w, --whishlist          add book to whishlist
+
+  `bms add -a "Author" --author "Another Author" --title "Book title" -g "Book genre" -r -w -l "https://link_where_you_can_order_the_book" -s "Book ISBN"`
+
+### list
+Usage:
+  bms list
+
+Flags:
+  -h, --help        help for list
+  -w, --whishlist   show books from whishlist
+
+`bms list`
+`bms list -w`
+
+  ### read
+  Usage:
+  bms read [flags]
+
+Flags:
+  -h, --help        help for read
+  -i, --id string   set book id
+
+`bms read --id 15`

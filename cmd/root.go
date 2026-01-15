@@ -14,10 +14,6 @@ const (
 	bookshelfFile = "data/.bookshelf.json"
 )
 
-// Load list of books from the shelfFile
-// If file does not esists create empty shelf
-//Pass it to the cobra cli
-
 var rootCmd = &cobra.Command{
 	Use:   "bms",
 	Short: "Book Management System",

@@ -6,32 +6,33 @@ type Book struct {
 	Authors   []string `json:"authors"`
 	Name      string   `json:"name"`
 	ISBN      string   `json:"isbn"`
+	Genre     string   `json:"genre"`
 	Read      bool     `json:"read"`
 	Whishlist bool     `json:"whishlist"`
 	StoreLink string   `json:"store_link,omitempty"`
 }
 
 // Create new book
-func NewBook(id int, name string, authors []string, isbn string, read string) Book {
-	//create new empty book
-	//fill the book with data
+func NewBook(id int, name string, authors []string, isbn string, read bool, genre string) Book {
+
 	//TODO: add validation to entered values
 
-	var readBook bool
+	// var readBook bool
 
-	switch read {
-	case "yes", "y", "YES", "Yes", "Y":
-		readBook = true
-	default:
-		readBook = false
-	}
+	// switch read {
+	// case "yes", "y", "YES", "Yes", "Y":
+	// 	readBook = true
+	// default:
+	// 	readBook = false
+	// }
 
 	return Book{
 		ID:        id,
 		Name:      name,
 		Authors:   authors,
 		ISBN:      isbn,
-		Read:      readBook,
+		Genre:     genre,
+		Read:      read,
 		Whishlist: false,
 		StoreLink: "",
 	}
@@ -40,8 +41,6 @@ func NewBook(id int, name string, authors []string, isbn string, read string) Bo
 
 // Add book to whishlist and set store link
 func (b *Book) AddToWhishlist(link string) {
-	//add book to whishlist
-	//set storelink
 	b.Whishlist = true
 	b.StoreLink = link
 }
