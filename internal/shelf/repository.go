@@ -2,7 +2,9 @@ package shelf
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
+	"path/filepath"
 )
 
 type Repository struct {
@@ -33,6 +35,14 @@ func (repo *Repository) Add(book Book) {
 
 // Save shelf to file
 func (repo *Repository) Save(filename string) error {
+
+	dir := filepath.Dir(filename)
+	if _, err := os.Stat(dir); os.IsNotExist(err) {
+		if err := os.MkdirAll(dir, 0755); err != nil {
+			return fmt.Errorf("cannot create dir %s: %w", dir, err)
+		}
+	}
+
 	data, err := json.MarshalIndent(repo, "", " ")
 	if err != nil {
 		return err
